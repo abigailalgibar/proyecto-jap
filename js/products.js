@@ -1,5 +1,7 @@
 const url = "https://japceibal.github.io/emercado-api/cats_products/101.json";
 
+const productsArray = [];
+
 function showData(array) {
   const productListContainer = document.getElementById("product-list");
   let htmlContentToAppend = '';
@@ -28,8 +30,6 @@ function showData(array) {
   })
 
 };
-
-const productsArray = [];
 
 fetch(url)
   .then(response => response.json())
