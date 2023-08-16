@@ -13,6 +13,16 @@
 </head>
 
 <body>
+  <script>
+    // Verificar si el usuario está autenticado
+    const isLoggedIn = localStorage.getItem("isLoggedIn");
+
+    // Redirigir al formulario de inicio de sesión si no está autenticado
+    if (!isLoggedIn) {
+      alert("Debes iniciar sesión para acceder a esta página.");
+      window.location.href = "login.html";
+    }
+  </script>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark p-1">
     <div class="container">
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -36,10 +46,18 @@
       </div>
     </div>
   </nav>
-  <main class="pb-5 container">
-    <h1 class="text-center">Productos</h1>
-    <p class="text-center">Verás aquí todos los productos de la categoria Autos</p>
-    <div class="container" id="product-list">
+  <main id= container class="pb-5 container">
+
+    <h1 class="text-center pt-3">Productos</h1>
+    <p class="text-center">Verás aqui todos los productos de la categoria Autos</p>
+    <!-- Agregregando clase lista-productos -->
+    <div class="container product-list p-3" > 
+
+
+    <!-- Agregregando clase lista-productos -->
+    <div class="container product-list"> 
+
+      
     </div>
   </main>
   <footer class="text-muted">
