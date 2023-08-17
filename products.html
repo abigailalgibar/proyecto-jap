@@ -15,7 +15,7 @@
 <body>
   <script>
     // Verificar si el usuario está autenticado
-    const isLoggedIn = localStorage.getItem("isLoggedIn");
+    const isLoggedIn = sessionStorage.getItem("isLoggedIn");
 
     // Redirigir al formulario de inicio de sesión si no está autenticado
     if (!isLoggedIn) {
@@ -53,9 +53,6 @@
     <!-- Agregregando clase lista-productos -->
     <div class="container product-list p-3" > 
 
-
-    <!-- Agregregando clase lista-productos -->
-    <div class="container product-list"> 
 
       
     </div>
