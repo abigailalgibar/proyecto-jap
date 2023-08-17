@@ -89,20 +89,25 @@
 
 // Solucion codigoconjuan
 
+
+
+
+
+
 const url = "https://japceibal.github.io/emercado-api/cats_products/101.json";
 
 fetch(url)
     .then(response => response.json())
-    .then(resultado => mostrarHTML ( resultado ));
+    .then(resultado => mostrarHTML(resultado));
 
-    
-    function mostrarHTML(data){
-        const productos = document.querySelector('.product-list');
 
-        let htmlContent = '';
+function mostrarHTML(data) {
+    const productos = document.querySelector('.product-list');
 
-        data.products.forEach(product => {
-            htmlContent += `
+    let htmlContent = '';
+
+    data.products.forEach(product => {
+        htmlContent += `
                 <div class="list-group-item list-group-item-action">
                     <div class="row">
                         <div class="col-3">
@@ -120,10 +125,9 @@ fetch(url)
                     </div>
                 </div>
             `;
-        });
+    });
 
-        productos.innerHTML = htmlContent;
-    }
-       
+    productos.innerHTML = htmlContent;
+}
 
-       
+
