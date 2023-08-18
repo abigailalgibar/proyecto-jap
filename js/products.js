@@ -98,8 +98,8 @@ const url = "https://japceibal.github.io/emercado-api/cats_products/101.json";
 
 fetch(url)
     .then(response => response.json())
-    .then(resultado => mostrarHTML(resultado));
-
+    .then(resultado => mostrarHTML(resultado))
+    .catch(error => console.error('Ocurrió un error:', error));
 
 function mostrarHTML(data) {
     const productos = document.querySelector('.product-list');
