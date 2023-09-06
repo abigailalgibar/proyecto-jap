@@ -32,6 +32,5 @@ function mostrarHTML(data) {
     });
 
     productos.innerHTML = htmlContent;
-}
-
+};
 
