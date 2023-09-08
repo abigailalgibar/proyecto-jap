@@ -103,4 +103,8 @@ document.addEventListener("DOMContentLoaded", function() {
     
   });      
 
+  function ObtenerId(Identificador) {
+    localStorage.setItem("IdProducto", Identificador);
+    window.location.href="product-info.html"
+    };
        
