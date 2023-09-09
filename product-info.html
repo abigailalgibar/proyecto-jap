@@ -10,8 +10,21 @@
   <link href="css/font-awesome.min.css" rel="stylesheet">
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="icon" href="img/logo.jpg" type="image/png">
 </head>
+
+<style>
+
+  .lista {
+    padding: 10px;
+    border: 1px solid #e8e8e8
+  }
+  
+  .checked {
+  color: orange;
+}
+</style>
 
 <body>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark p-1">
@@ -60,9 +73,15 @@
       </div>
       <div >
         <h4>Imagenes Ilustrativas</h4>
-        <img   >  
+        <img>  
+      </div>
+      <div>
+        <h4 style="padding-left: 2rem;">Comentarios</h4>
+        <ul id="comentarios" style="list-style:none;"></ul>
       </div>
     </div>
+
+      
   </main>
   <footer class="text-muted">
     <div class="container">

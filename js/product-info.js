@@ -22,6 +22,54 @@ function ObtenerInfo(ID) {
   }
   
   
+  // window.onload = function() {
+  //   ObtenerInfo(localStorage.getItem("IdProducto"));
+  // };
+
+
+// Comentarios 
+
+  function ObtenerComentarios(ID) {
+    const url = `https://japceibal.github.io/emercado-api/products_comments/${ID}.json`;
+
+    fetch(url)
+      .then(response => response.json())
+      .then(comentarios => {
+
+        const mostrarComentarios = document.getElementById("comentarios");
+        // ComentariosContainer.innerHTML = ""; // Limpia el contenido anterior
+        
+        comentarios.forEach(comentario => {
+
+          const li = document.createElement("li");
+          li.classList.add("lista"); // Clase para darle estilos a la lista
+
+          // Mostrar Estrellas   
+          let estrellasHTML = '';
+
+          for (let i = 1; i <= 5; i++) {
+            if (i <= comentario.score) {
+              estrellasHTML += '<span class="fa fa-star checked"></span>';
+            } else {
+              estrellasHTML += '<span class="fa fa-star"></span>';
+            }
+          }    
+          
+          li.innerHTML = `
+            <strong>${comentario.user}</strong> - ${comentario.dateTime} - ${estrellasHTML} <br>
+            ${comentario.description}
+           
+       
+          `;
+          mostrarComentarios.appendChild(li);
+        });
+      })
+      .catch(error => console.error('Ocurrió un error:', error));
+  }
+  
   window.onload = function() {
-    ObtenerInfo(localStorage.getItem("IdProducto"));
+    const productId = localStorage.getItem("IdProducto");
+    ObtenerInfo(productId);
+    ObtenerComentarios(productId);
   };
+  
