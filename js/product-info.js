@@ -1,9 +1,9 @@
+
 window.onload = function () {
   const productId = localStorage.getItem("IdProducto");
   ObtenerInfo(productId);
   ObtenerComentarios(productId);
 };
-
 
 function ObtenerInfo(ID) {
   const url = `https://japceibal.github.io/emercado-api/products/${ID}.json`;
@@ -47,7 +47,6 @@ function mostrarImagenes(producto) {
   return contenedorImagenes;
 }
 
-
 //Funcion para crear las estrellas 
 function starRating(rating){ 
   let ratingHTML = ''
@@ -73,10 +72,6 @@ const currentDate = new Date();
  const seconds = String(currentDate.getSeconds()).padStart(2, '0');
  
  const formattedDate = ` ${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
-
-
-
-
 
 
 // Comentarios
