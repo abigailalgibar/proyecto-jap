@@ -44,7 +44,7 @@ function mostrarImagenes(producto) {
     const activeClass = index === 0 ? 'active' : ''; // Agrega la clase 'active' al primer elemento
     contenedorImagenes += `
       <div class="carousel-item ${activeClass}">
-        <img src="${element}" class="d-block w-100" alt="Imagen ${index + 1}">
+        <img src="${element}" class="d-block w-100 custom-image" alt="Imagen ${index + 1}">
       </div>
     `;
   });
