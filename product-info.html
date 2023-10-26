@@ -14,15 +14,6 @@
   <link rel="icon" href="img/logo.jpg" type="image/png">
 </head>
 
-<!-- <style>
-
-  .lista {
-    padding: 10px;
-    border: 1px solid #e8e8e8
-  }
-  
-</style> -->
-
 <body>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark p-1">
     <div class="container">
@@ -33,7 +24,7 @@
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav w-100 justify-content-between">
           <li class="nav-item">
-            <a class="nav-link" href="index.html">Inicio</a>
+            <a class="nav-link active" href="index.html">Inicio</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="categories.html">Categorías</a>
@@ -41,63 +32,81 @@
           <li class="nav-item">
             <a class="nav-link" href="sell.html">Vender</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#" id="userbutton"></a>
-          </li>
+          <div class="dropdown">
+            <a class="nav-link dropdown-toggle" type="button" id="userbutton" data-bs-toggle="dropdown"
+              aria-expanded="false">
+              Inicia sesión
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <li><a class="dropdown-item" href="cart.html">Mi Carrito</a></li>
+              <li><a class="dropdown-item" href="my-profile.html">Mi Perfil</a></li>
+              <li><a class="dropdown-item" href="#" id="logOut">Cerrar sesión</a></li>
+              <li>
+                <hr class="dropdown-divider">
+              </li>
+              <li><button id="color-mode" class="btn">Cambiar a Dark</button></li>
+            </ul>
+          </div>
         </ul>
       </div>
     </div>
   </nav>
   <main>
     <div class="container">
-      <div >
-        <br>  <h1 id="Titulo"></h1> 
+      <div>
+        <br>
+        <div class="d-flex justify-content-between mt-3">
+          <h1 id="title"></h1>
+          <button id="addToCart">Agregar al carrito</button>
+        </div>
         <hr>
-        <h4 >Precio</h4> 
-        <p id="Precio"></p>
+        <h4>Precio</h4>
+        <p id="cost"></p>
       </div>
-      <div >
-        <h4>Descripcion</h4> 
-        <p id="Descripcion"></p>
+      <div>
+        <h4>Descripción</h4>
+        <p id="description"></p>
       </div>
-      <div >
+      <div>
         <h4>Categorías</h4>
-        <p id="Categorias"></p>
+        <p id="category"></p>
       </div>
-      <div >
-        <h4>Cantidad de Vendidos</h4> 
-        <p id="CantVendidos"></p>
+      <div>
+        <h4>Cantidad de Vendidos</h4>
+        <p id="soldCount"></p>
       </div>
-      <div >
+      <div>
         <h4>Imagenes Ilustrativas</h4>
-        <div id="imagenes"></div>  
+        <div id="images"></div>
       </div>
       <div>
         <h4>Comentarios</h4><br>
-        <ul  id="comentarios" style="list-style:none;"></ul>
-        <div class="option mt-4" >
+        <ul id="comments" style="list-style:none;"></ul>
+        <div class="option mt-4">
 
-          <form action=""id ="envioComentario">
-          <h4>Comentar</h4>
-          <label for="TuOpinion">Tu opinion:</label><br>
-          <textarea name="MiOpinion" id="miOpinion" cols="80" rows="3"></textarea><br>
-          <label for="puntuacion">Tu puntuacion</label><br>
-          <select style="padding: 8px;padding-right: 80px;" name="MiPuntuacion" id="miPuntuacion" >
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5 </option>
-          </select><br><br>
-          <input type="submit" id="enviar" value="Enviar">
-        </form>
+          <form action="" id="sendComment">
+            <h4>Comentar</h4>
+            <label for="TuOpinion">Tu opinion:</label><br>
+            <textarea name="MiOpinion" id="myOpinion" cols="80" rows="3"></textarea><br>
+            <label for="puntuacion">Tu puntuacion</label><br>
+            <select style="padding: 8px;padding-right: 80px;" name="MiPuntuacion" id="myRating">
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5 </option>
+            </select><br><br>
+            <input type="submit" id="enviar" value="Enviar">
+          </form>
+          <div>
+            <h4>Productos Relacionados</h4>
+            <div id="relatedProducts"></div>
+          </div>
         </div>
       </div>
     </div>
 
-    
-  </div>
-
+    </div>
 
   </main>
   <footer class="text-muted">
@@ -105,7 +114,8 @@
       <p class="float-end">
         <a href="#">Volver arriba</a>
       </p>
-      <p>Este sitio forma parte de <a href="https://jovenesaprogramar.edu.uy/" target="_blank">Jovenes a Programar</a></p>
+      <p>Este sitio forma parte de <a href="https://jovenesaprogramar.edu.uy/" target="_blank">Jovenes a Programar</a>
+      </p>
     </div>
   </footer>
   <div id="spinner-wrapper">

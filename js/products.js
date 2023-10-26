@@ -2,11 +2,12 @@ document.addEventListener("DOMContentLoaded", function() {
     let sortOrder = '';
     let searchData = [];
   
-   function mostrarHTML(data) {
-      const productosContainer = document.querySelector('.product-list');
+   function showHTML(data) {
+      const productsContainer = document.querySelector('.product-list');
       const minPrice = parseInt(document.querySelector('#rangeFilterPriceMin').value);
       const maxPrice = parseInt(document.querySelector('#rangeFilterPriceMax').value);
       const searchInput = document.querySelector('#searchInput').value.trim().toLowerCase(); 
+     
       
   
       if (sortOrder === 'asc') {
@@ -31,7 +32,7 @@ document.addEventListener("DOMContentLoaded", function() {
   
       filteredData.forEach(product => {
         htmlContent += `
-          <div class="list-group-item list-group-item-action cursor-active" onclick="ObtenerId('${product.id}')">
+          <div class="list-group-item list-group-item-action cursor-active " onclick="getId('${product.id}')">
             <div class="row">
               <div class="col-3">
                 <img src="${product.image}" alt="product image" class="img-thumbnail">
@@ -40,7 +41,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 <div class="d-flex w-100 justify-content-between">
                   <div class="mb-1">
                     <h4>${product.name} - ${product.currency} ${product.cost}</h4>
-                    <p>${product.description}</p>
+                    <p class="mb-1">${product.description}</p>
                   </div>
                   <small class="text-muted">${product.soldCount} artículos</small>
                 </div>
@@ -50,17 +51,17 @@ document.addEventListener("DOMContentLoaded", function() {
         `;
       });
   
-      productosContainer.innerHTML = htmlContent;
+      productsContainer.innerHTML = htmlContent;
     }
   
-    function cargarProductos(catID) {
+    function loadProducts(catID) {
       
       const url = `https://japceibal.github.io/emercado-api/cats_products/${catID}.json`;
       fetch(url)
         .then(response => response.json())
-        .then(resultado => {
-          searchData = resultado.products;
-          mostrarHTML(searchData);
+        .then(result => {
+          searchData = result.products;
+          showHTML(searchData);
         })
         .catch(error => console.error('Ocurrió un error:', error));
     
@@ -69,21 +70,21 @@ document.addEventListener("DOMContentLoaded", function() {
 
     document.querySelector('#sortAsc').addEventListener('click', () => {
       sortOrder = 'asc';
-      cargarProductos(catID);
+      loadProducts(catID);
     });
   
     document.querySelector('#sortDesc').addEventListener('click', () => {
       sortOrder = 'desc';
-      cargarProductos(catID);
+      loadProducts(catID);
     });
   
     document.querySelector('#sortByCount').addEventListener('click', () => {
       sortOrder = 'soldCount';
-      cargarProductos(catID);
+      loadProducts(catID);
     });
   
     document.querySelector('#rangeFilterPrice').addEventListener('click', () => {
-      cargarProductos(catID);
+      loadProducts(catID);
     });
   
     document.querySelector('#clearRangeFilter').addEventListener('click', () => { // Limpiamos todos los campos 
@@ -91,20 +92,20 @@ document.addEventListener("DOMContentLoaded", function() {
       document.querySelector('#rangeFilterPriceMax').value = '';
       document.querySelector('#searchInput').value = '';
       sortOrder = '';
-      cargarProductos(catID);
+      loadProducts(catID);
     });
   
     document.querySelector('#searchInput').addEventListener('input', () => {
-      mostrarHTML(searchData);
+      showHTML(searchData);
     });
   
     const catID = localStorage.getItem("catID");
-    cargarProductos(catID);
+    loadProducts(catID);
     
   });   
   
-function ObtenerId(Identificador) {
-localStorage.setItem("IdProducto", Identificador);
+function getId(id) {
+localStorage.setItem("productId", id);
 window.location.href= "product-info.html"
 }
        

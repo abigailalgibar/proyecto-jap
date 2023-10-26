@@ -196,6 +196,9 @@ a.custom-card:hover {
   background-size: cover;
   font-family: sans-serif;
   height: 100vh;
+  /* display: flex;
+  justify-content: center;
+  align-items: center; */
 }
 
 .login-box {
@@ -289,7 +292,121 @@ a.custom-card:hover {
   color: #fff;
 }
 
-.custom-image{
-  width: 100px;
-  height: auto;
+/* Cambiar Background de la pagina  */
+.dark-mode {
+  /* background-color: #666666; */
+  background: rgb(27,16,34);
+  background: linear-gradient(90deg, rgba(27,16,34,1) 35%, rgba(72,44,44,1) 55%, rgba(7,5,2,1) 86%);
+  color: white;
+}
+.dark-mode p:not(.mb-1){
+  color: white;
+}
+
+.dark-mode a:not(.dropdown-item) {
+  color: white;
+} 
+
+.dark-mode #clearRangeFilter  {
+  color: white;
+}
+.dark-mode .card-text {
+  color: black;
+}
+.dark-mode .m-3 {
+  color: black;
+}
+
+
+/* Personalización para colocar las flechas dentro de la imagen */
+.carousel-control-prev, .carousel-control-next {
+  background: transparent;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 10%;
+}
+
+.carousel-control-prev-icon, .carousel-control-next-icon {
+  background-color: rgba(0, 0, 0, 0.5); /* Color de fondo de las flechas */
+  border-radius: 100%;
+  color: white; /* Color de las flechas */
+  font-size: 20px; /* Tamaño de las flechas */
+  line-height: 1.7; /* Alineación vertical de las flechas */
+  padding: 20px; /* Espacio alrededor de las flechas */
+}
+
+
+
+/* Boton para agregar y limpiar el carrito */
+#addToCart {
+  background-color: #4CAF50; 
+  color: white; 
+  border-radius: 5px;
+  border-color: #4CAF50;
+}
+
+#cleanCart{
+  border-radius: 5px;
+}
+
+/* Responsive pagina products */
+@media (max-width: 576px) {
+    .menu-group {
+      display: flex;
+      flex-direction: column;
+      gap: .3rem;
+    }
+    
+}
+@media (max-width: 576px) {
+  .text-precio{
+    margin: 0;
+  }
+}
+
+/* Responsive pagina product-info  */
+
+@media (max-width: 768px) {
+  .custom-image {
+    max-width: 400px;
+  }
+  #miOpinion{
+    display: block;
+    width: 100%;
+    margin: 0 auto;
+  }
+  .imagen-carrusel{
+    margin: 0;
+    max-width: auto;
+  }
+  .card img{
+    width: 100%;
+    margin: 0 auto;
+  }
+  #comentarios{
+    padding: 0;
+  }
+}
+
+/* Responsive login */
+@media (max-width: 768px) {
+      .login-box {
+        width: 300px;
+        height: 500px;
+        background: #212529;
+        color: #fff;
+        top: 50%;
+        left: 50%;
+        position: absolute;
+        box-sizing: border-box;
+        padding: 50px 30px;
+        box-shadow: 10px 10px 73px 0px rgba(0,0,0,0.75);
+        border-radius: 20px;
+      }
+}
+
+/* Forma de pago*/
+
+.payTitle {
+  font-size: 1.4rem;
 }

@@ -22,7 +22,7 @@
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav w-100 justify-content-between">
           <li class="nav-item">
-            <a class="nav-link" href="index.html">Inicio</a>
+            <a class="nav-link active" href="index.html">Inicio</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="categories.html">Categorías</a>
@@ -30,26 +30,260 @@
           <li class="nav-item">
             <a class="nav-link" href="sell.html">Vender</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#" id="userbutton"></a>
-          </li>
+          <div class="dropdown">
+            <a class="nav-link dropdown-toggle" type="button" id="userbutton" data-bs-toggle="dropdown"
+              aria-expanded="false">
+              Inicia sesión
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <li><a class="dropdown-item" href="cart.html">Mi Carrito</a></li>
+              <li><a class="dropdown-item" href="my-profile.html">Mi Perfil</a></li>
+              <li><a class="dropdown-item" href="#" id="logOut">Cerrar sesión</a></li>
+              <li>
+                <hr class="dropdown-divider">
+              </li>
+              <li><button id="color-mode" class="btn">Cambiar a Dark</button></li>
+            </ul>
+          </div>
         </ul>
       </div>
     </div>
   </nav>
-  <main>
-    <div class="container">
-      <div class="alert alert-danger text-center" role="alert">
-        <h4 class="alert-heading">Funcionalidad en desarrollo</h4>
-      </div>
+
+  <main id="product-container" class="pb-5 container">
+    <div id="successAlert" class="alert alert-success d-block d-none" role="alert" style="z-index:999;">
+      ¡Has comprado con éxito!
     </div>
+    <br>
+    <h1 class="text-center pt-3">Carrito de compras</h1>
+    <br>
+    <p class="payTitle">Articulos a comprar</p>
+    <br>
+    <table class="table">
+      <thead>
+        <tr>
+          <th></th>
+          <th>Nombre</th>
+          <th>Costo</th>
+          <th>Cantidad</th>
+          <th>Subtotal</th>
+        </tr>
+      </thead>
+      <tbody id="product-table-body">
+      </tbody>
+    </table>
+    <div class="mt-4">
+      <button class="btn btn-danger btn-lg float-end" id="cleanCart">Limpiar Carrito</button>
+    </div>
+    
+    <br>
+    
+    <div class="container mt-5">
+      <form class="row needs-validation" novalidate>
+        <div class="col-12">
+          <p class="payTitle">Tipo de envío</p>
+          <div class="form-check">
+            <label for="shippingType1" class="form-check-label">Premium 2 a 5 días (15%)</label>
+            <input class="form-check-input" type="radio" name="defaultShipping" id="shippingType1" required>
+          </div>
+          <div class="form-check">
+            <label for="shippingType2" class="form-check-label">Express 5 a 8 días (7%)</label>
+            <input class="form-check-input" type="radio" name="defaultShipping" id="shippingType2" required>
+          </div>
+          <div class="form-check">
+            <label for="shippingType3" class="form-check-label">Standard 12 a 15 días (5%)</label>
+            <input class="form-check-input" type="radio" name="defaultShipping" id="shippingType3" required>
+            <div class="valid-feedback">
+              Es correcto!
+            </div>
+            <div class="invalid-feedback">
+              Debes seleccionar un tipo de envío.
+            </div>
+          </div>
+      </form>
+      <hr class="mt-5">
+    </div>
+
+    <form class="row needs-validation" novalidate>
+      <p class="payTitle mt-4">Dirección de envío</p>
+      <div class="d-flex flex-column">
+        <div class="col-3">
+          <label for="streetName" class="form-label">Calle</label>
+          <input type="text" class="form-control" id="streetName" required>
+          <div class="valid-feedback">
+            Es correcto!
+          </div>
+          <div class="invalid-feedback">
+            Debes ingresar una calle.
+          </div>
+        </div>
+        <div class="col-3">
+          <label for="streetNumber" class="form-label">Número</label>
+          <input type="text" class="form-control" id="streetNumber" required>
+          <div class="valid-feedback">
+            Es correcto!
+          </div>
+          <div class="invalid-feedback">
+            Debes ingresar un número de calle.
+          </div>
+        </div>
+        <div class="col-3">
+          <label for="streetCorner" class="form-label">Esquina</label>
+          <input type="text" class="form-control" id="streetCorner" required>
+          <div class="valid-feedback">
+            Es correcto!
+          </div>
+          <div class="invalid-feedback">
+            Debes ingresar una esquina.
+          </div>
+        </div>
+      </div>
+    </form>
+    <hr class="mt-5">
+    <div>
+
+      <div class="row mt-5">
+        <p class="payTitle mb-4">Costos</p>
+        <div class="list-group-item list-group-item-action cursor-active">
+          <div class="row">
+            <div class="col-3">
+              <p class="fs-6">Subtotal</p>
+            </div>
+            <div class="col">
+              <p class="text-end text-muted" id="costsSubtotal"></p>
+            </div>
+          </div>
+        </div>
+        <div class="list-group-item list-group-item-action cursor-active">
+          <div class="row">
+            <div class="col-3">
+              <p class="fs-6">Costo de envío</p>
+            </div>
+            <div class="col">
+              <p class="text-end text-muted" id="shippingCosts"></p>
+            </div>
+          </div>
+        </div>
+
+        <div class="list-group-item list-group-item-action cursor-active">
+          <div class="row">
+            <div class="col-3">
+              <p class="fs-6">Total ($)</p>
+            </div>
+            <div class="col">
+              <p class="text-end fw-bold" id="totalCosts"></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+      <div>
+        <hr class="mt-5">
+        <p class="payTitle mt-5">Forma de pago</p>
+        <p class="d-inline-block" id="method">No se ha seleccionado | </p>
+        <a class="link-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Seleccionar</a>
+  
+      </div>
+      
+      <!-- Este es el modal -->
+      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="exampleModalLabel">Forma de pago</h1>
+  
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            
+              <form id="modalForm" class="modal-body needs-validation" novalidate>
+                <input type="radio" id="option1" name="option">
+                <label for="option1">Tarjeta de crédito</label>
+                <hr>
+  
+                <div class="container" id="option-card">
+                  <div class="row row-cols-2">
+  
+                    <div class="col">
+                      <label for="card-number">Número de Tarjeta</label>
+                      <input type="text" class="form-control" id="card-number" name="card-number" required>
+                      <div class="valid-feedback">
+                        Es correcto!
+                      </div>
+                      <div class="invalid-feedback">
+                        Debes ingresar un número de tarjeta.
+                      </div>
+                    </div>
+  
+                    <div class="col">
+                      <label for="cvv">Código de seg.</label>
+                      <input type="text" class="form-control w-75" id="cvv" name="cvv" required><br>
+                      <div class="valid-feedback">
+                        Es correcto!
+                      </div>
+                      <div class="invalid-feedback">
+                        Debes ingresar un código de seguridad.
+                      </div>
+                    </div>
+  
+                    <div class="col">
+                      <label for="expiration-date">Vencimiento (MM/AA)</label>
+                      <input type="text" class="form-control" id="expiration-date" name="expiration-date" required><br>
+                      <div class="valid-feedback">
+                        Es correcto!
+                      </div>
+                      <div class="invalid-feedback">
+                        Debes ingresar una fecha de vencimiento.
+                      </div>
+                    </div>
+  
+                  </div>
+                </div>
+  
+                <input type="radio" id="option2" name="option">
+                <label for="option2">Transferencia bancaria</label>
+                <hr>
+  
+                <div class="container" id="option-bank">
+                  <div class="row row-cols-2">
+  
+                    <div class="col">
+                      <label for="account-number">Número de cuenta</label>
+                      <input type="text" class="form-control" id="account-number" name="account-number" required>
+                      <div class="valid-feedback">
+                        Es correcto!
+                      </div>
+                      <div class="invalid-feedback">
+                        Debes ingresar un número de cuenta.
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            
+            <div class="modal-footer">
+              <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cerrar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col d-flex align-items-center justify-content-end mt-3">
+        <button type="button" class="btn btn-primary btn-lg float-end" id="checkoutBtn">
+          Finalizar Compra
+          <i class="fas fa-arrow-right ps-3"></i>
+        </button>
+      </div>
+
+
   </main>
+
   <footer class="text-muted">
     <div class="container">
       <p class="float-end">
         <a href="#">Volver arriba</a>
       </p>
-      <p>Este sitio forma parte de <a href="https://jovenesaprogramar.edu.uy/" target="_blank">Jovenes a Programar</a></p>
+      <p>Este sitio forma parte de <a href="https://jovenesaprogramar.edu.uy/" target="_blank">Jovenes a Programar</a>
+      </p>
     </div>
   </footer>
   <div id="spinner-wrapper">
