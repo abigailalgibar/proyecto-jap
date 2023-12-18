@@ -19,13 +19,9 @@
 
 ## People who participate in this project
 
-### Project from Group 1 - https://github.com/maxipz/proyecto-jap
+### Project from Group 1
 
 The main branch represents the frontend aspect of the project, whereas the secondary branch encompasses the backend components, incorporating technologies such as node.js, express, MariaDB, and jsonwebtoken.
-
-Deliveries 1, 2, 3, and 4 were not done through branches but in individual repositories manually. I leave mine as a reference: https://github.com/maxipz/proyecto-jovenes-a-programar
-
-Starting from Delivery 5, this repository will be worked on using branches, and fellow Group 1 members will be added as collaborators.
 
 Group 1: Maximiliano Pereyra, Carlo Peña, Alejandro Erburo, Abigail Algibar, Lauro Fanjul, Bruno Facello, Valentina Suarez, Mateo Brun.
 
@@ -49,12 +45,8 @@ Group 1: Maximiliano Pereyra, Carlo Peña, Alejandro Erburo, Abigail Algibar, La
 
 ## Personas que participan en este proyecto
 
-### Proyecto del Grupo 1 - https://github.com/maxipz/proyecto-jap
+### Proyecto del Grupo 1
 
 La rama principal representa la parte frontal (frontend) del proyecto, mientras que la rama secundaria abarca los componentes del backend, incorporando tecnologías como node.js, express, MariaDB y jsonwebtoken.
-
-Las entregas 1, 2, 3 y 4 no se realizaron a través de branches, sino en repositorios individuales de forma manual. Dejo el mío como referencia: https://github.com/maxipz/proyecto-jovenes-a-programar
-
-A partir de la entrega 5, este repositorio se trabajará utilizando branches, y se agregarán como colaboradores a los miembros del Grupo 1.
 
 Grupo 1: Maximiliano Pereyra, Carlo Peña, Alejandro Erburo, Abigail Algibar, Lauro Fanjul, Bruno Facello, Valentina Suarez, Mateo Brun.
